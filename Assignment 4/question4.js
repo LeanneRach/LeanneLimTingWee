@@ -4,3 +4,12 @@ const msftData = [
 ];
 
 // Write your code below
+
+let closeSum = 0;
+for (let i = 0; i < msftData.length; i++) {
+  closeSum += msftData[i][3];  // index 3 = Close
+}
+
+const avgClose = closeSum / msftData.length;
+
+console.log("Average closing price of MSFT is " + avgClose.toFixed(2));
