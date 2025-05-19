@@ -1,0 +1,35 @@
+Example Question:
+p.then(value => console.log(value));
+
+Question 1:
+// Your code here
+
+Question 2:
+// Your code here
+
+Question 3:
+// Your code here
+
+Question 4:
+// Your code here
+
+Question 5:
+// Your code here
+
+Question 6:
+// Your code here
+
+Question 7:
+// Your code here
+
+Question 8:
+// Your code here
+
+Question 9:
+// Your code here
+
+Question 10:
+// Your code here
+
+Bonus Question:
+// Your code here
