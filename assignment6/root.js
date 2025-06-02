@@ -1,27 +1,6 @@
 // root.js
 
-function PublicBlogPost() {
-
-}
-
-function PrivateBlogPost() {
-
-}
-
-function BlogList() {
-
-}
-
-function Header() {
-
-}
-
-function Footer() {
-
-};
-
-function App() {
-  const blogPosts = [
+const blogPosts = [
     {
       title: 'My First Blog Post',
       author: 'John Doe',
@@ -59,8 +38,80 @@ function App() {
     }
   ];
 
+function Header(props) {
+  return (
+    <header>
+      <h1>{props.sitetitle}</h1>
+      <p>{props.tagline}</p>
+    </header>
+  );
+}
+
+function BlogPost(props) {
+  return (
+    <div className="blog-post">
+      <h2>{props.title}</h2>
+      <p className="meta">By {props.author} on {props.date}</p>
+      <p>{props.content}</p>
+    </div>
+  )
+
+}
+
+function PrivateBlogPost(props) {
+  return (
+    <div className="private-posts">
+      <h2>{props.title}</h2>
+      <p className="meta">By {props.author} on {props.date}</p>
+      <p>{props.content}</p>
+    </div>
+  )
+
+}
+
+function BlogList() {
+  return (
+    <ul>
+      {blogPosts.map((post) =>
+        post.isPrivate === false ? (
+        <BlogPost
+          title={post.title}
+          author={post.author}
+          date={post.date}
+          content={post.content}
+        />
+        ) : (
+        <PrivateBlogPost
+          title={post.title}
+          author={post.author}
+          date={post.date}
+          content={"The content of this post is private"}
+        />
+      ))}
+    </ul>
+  );
+}
+
+function Footer(props) {
+  return (
+    <footer>
+      <p>© {props.year} My Blog. All rights reserved.</p>
+    </footer>
+  )
+
 };
+
+function App() {
+  const currentYear = new Date().getFullYear();
+  return (
+    <div>
+      <Header sitetitle="My Blog" tagline="A blog about everything" />
+      <BlogList />
+      <Footer year={currentYear} />
+    </div>
+  );
+}
 
 const domContainer = document.getElementById('root');
 const root = ReactDOM.createRoot(domContainer);
-root.render(<App />)
+root.render(<App />);
